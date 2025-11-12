@@ -248,8 +248,28 @@ Example: Grouping customers with similar buying habits into clusters without kno
 <br><br>
 The Folder Includes:
 <br><br>
-1. 
+1. Online_retail.ipynb - Online Retail Customer Segmentation using K-Means:
 
+📌 Overview:
+
+The objective is to uncover patterns in customer transactions and group them into clusters for strategic marketing insights.
+<br><br>
+
+⭐ Notebook Highlights:
+
+Loaded dataset containing thousands of online retail transactions
+
+Created RFM (Recency, Frequency, Monetary) features to capture customer purchase behavior
+
+Scaled numerical features using StandardScaler for uniformity
+
+Applied K-Means Clustering and determined the optimal number of clusters using the Elbow Method
+
+Assigned customers to 15 distinct clusters based on behavior
+
+Generated cluster summary statistics to understand spending patterns
+
+Visualized clusters using PCA plots and bar charts for interpretation
 
 
 <br><br>
