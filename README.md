@@ -13,7 +13,19 @@ This collection is ideal for:
 ✅ Demonstrating real data handling skills
 <br><br>
 
-📂 Included ML Projects:
+📂 Included ML Code:
+<br><br>
+A)  Supervised Learning Models:
+<br><br>
+Supervised learning is when we teach a machine using examples that already have the right answers.
+It learns from this labeled data so it can make accurate predictions on new information later — kind of like learning from past examples to guess future outcomes.
+
+Example: Teaching a model to predict house prices by showing it many houses along with their actual prices.
+
+<br><br>
+The Folder Includes :
+<br><br>
+
 1. FinancialData.ipynb — Loan Default Prediction (XYZCorp Lending Data)
 
 
@@ -225,7 +237,22 @@ Jupyter Notebook
 
 Imbalanced-learn (SMOTE)
 <br><br>
+B) Unsupervised Learning Models:
+<br><br>
+Unsupervised learning is when a machine learns from data without any labels or predefined answers.
 
+It tries to find hidden patterns, groups, or structures within the data on its own — without being told what the correct output is.
+<br><br>
+Example: Grouping customers with similar buying habits into clusters without knowing anything about them beforehand.
+
+<br><br>
+The Folder Includes:
+<br><br>
+1. 
+
+
+
+<br><br>
 📬 Contact:
 
 If you'd like to collaborate or improve any notebook, feel free to create an Issue or Pull Request.
