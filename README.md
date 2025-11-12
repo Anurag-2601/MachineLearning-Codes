@@ -204,6 +204,32 @@ Trained multiple models:
 Evaluated using accuracy & confusion matrix
 <br><br>
 
+7. Online_retail(KNN) - Online Retail Customer Classification
+
+📌 Overview:
+
+Predicts customer categories by analyzing behavioral and transactional data from the Online Retail dataset.
+
+⭐ Notebook Highlights:
+
+Loaded and explored the Online Retail dataset for customer classification
+
+Removed duplicates and handled missing values for clean, consistent data
+
+Engineered behavioral features (RFM) and scaled them using StandardScaler
+
+Split data into training and testing sets
+
+Implemented the K-Nearest Neighbors (KNN) classifier
+
+Tuned the model for optimal k value to improve prediction accuracy
+
+Evaluated the model using accuracy score, confusion matrix, and classification report
+
+Visualized decision boundaries and key insights
+
+<br><br>
+
 🧠 Skills Demonstrated Across All Projects:
 
 ✅ Data Cleaning & Wrangling
