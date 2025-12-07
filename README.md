@@ -1,304 +1,223 @@
-# MachineLearning-Codes
-This repository contains multiple end-to-end Machine Learning projects, each built using Python and Jupyter Notebooks.
-Every notebook demonstrates full ML workflows — data loading, cleaning, EDA, preprocessing, model training, evaluation, and insights.
+# Machine Learning Projects & Codes
+A curated collection of hands-on Machine Learning projects demonstrating data preprocessing, model building, evaluation, and ML workflows.
 
-This collection is ideal for:
+# Overview
 
-✅ ML/AI portfolio
+This repository contains my complete portfolio of Machine Learning projects implemented using Python and Jupyter Notebooks.
+Each project follows a structured ML pipeline that reflects real-world workflows used in data science and ML engineering roles.
 
-✅ Academic projects
+<h3>The goal of this repository is to showcase:</h3>
 
-✅ Industry preparation
+<li>Strong understanding of ML concepts
 
-✅ Demonstrating real data handling skills
-<br><br>
+<li>Ability to work with real datasets
 
-📂 Included ML Code:
-<br><br>
-A)  Supervised Learning Models:
-<br><br>
-Supervised learning is when we teach a machine using examples that already have the right answers.
-It learns from this labeled data so it can make accurate predictions on new information later — kind of like learning from past examples to guess future outcomes.
+<li>Clean and explainable code
 
-Example: Teaching a model to predict house prices by showing it many houses along with their actual prices.
+<li>End-to-end ML processes
 
-<br><br>
-The Folder Includes :
-<br><br>
+<li>Experimentation with multiple algorithms
 
-1. FinancialData.ipynb — Loan Default Prediction (XYZCorp Lending Data)
+<li>Model evaluation and result interpretation
 
+This repo is continuously updated as I work on deeper concepts like deployment, optimization, and advanced ML.
 
-📌 Overview:
+# Skills Demonstrated
 
-Predicts whether a loan defaults based on borrower profile and loan attributes.
+<li>Supervised Learning: Classification, Regression
 
-⭐ Notebook Highlights:
+<li>Unsupervised Learning: K-Means, Hierarchical Clustering
 
-Loaded dataset (73 rows, 246 raw columns)
+<li>Pipeline Engineering: Preprocessing → Training → Tuning → Evaluation
 
-Removed 200+ unusable “Unnamed” columns
+<li>Data Wrangling: Handling missing values, encoding, scaling, feature selection
 
-Cleaned missing values using median/mode/Unknown
+# Machine Learning Pipeline Used in the Projects
 
-Dropped non-predictive columns (IDs, payment history, descriptions)
+Every project in this repository follows the same industry-standard ML pipeline:
 
-One-hot encoded:
+<h3>1️) Data Collection</h3>
 
-✅ Grade
+<li>Load CSV/Excel/JSON datasets
 
-✅ Term
+<li>Inspect structure and metadata
 
-✅ Sub-grade
+<h3>2️) Data Preprocessing</h3>
 
-✅ Employment length
+<li>Missing value handling
 
-✅ Home ownership
+<li>Label encoding / One-Hot Encoding
 
-✅ State
+<li>Scaling (StandardScaler / MinMaxScaler)
 
-✅ Purpose
+<li>Train-test split
 
-Scaled numerical columns using StandardScaler
+<li>Outlier detection (IQR/Z-score)
 
-Trained Logistic Regression
+<h3>3️) Exploratory Data Analysis (EDA)</h3>
 
-Achieved 82.35% accuracy
+<li>Distribution analysis
 
-Plotted confusion matrix & correlation heatmap
+<li>Correlation heatmaps
 
-<br><br>
-2. banking.ipynb — Banking ML Model (Churn/Loan/Customer Behavior)
+<li>Feature insights
 
+<li>Boxplots & pairplots
 
-📌 Overview:
+<h3>4️) Model Building</h3>
 
-Machine learning model built on a banking dataset for customer behavior prediction.
+<li>Classification models
 
-⭐ Notebook Highlights:
+<li>Regression models
 
-Cleaned and formatted customer records
+<li>Ensemble learning
 
-One-hot encoded categorical variables
+<li>Clustering algorithms
 
-Balanced dataset using SMOTE
+<h3>5️) Model Optimization (Where applicable)</h3>
 
-Trained models:
+<li>Parameter tuning
 
-✅ Logistic Regression
+<li>Feature selection
 
-✅ RandomForest
+<li>Comparison of algorithms
 
-✅ Gradient Boosting / XGBoost (if included)
+<h3>6️) Evaluation & Reporting</h3>
 
-Plotted ROC Curve & confusion matrix
+<li>Confusion matrix
 
-Extracted feature importance
-<br><br>
+<li>ROC-AUC
 
-3. cs_intrusion_det.ipynb — Cybersecurity Intrusion Detection
+<li>Error metrics
 
-📌 Overview:
+<li>Visualizing predictions
 
-Builds an Intrusion Detection System (IDS) to detect malicious network traffic.
+<h3>7️) Model Export (Upcoming)</h3>
 
-⭐ Notebook Highlights:
+<li>Save model as .pkl or .joblib
 
-Cleaned network traffic dataset
+<li>Prepare for deployment
 
-Visualized normal vs attack traffic
+# Project List & Summaries
 
-Encoded protocol & attack-type fields
+Below are the main ML projects included in this repository:
 
-Trained ML models:
+<h3>1) Classification Models</h3>
 
-✅ Logistic Regression
+<h4>Algorithms:</h4>
 
-✅ SVM
+<li>Logistic Regression
 
-✅ RandomForest
+<li>SVM
 
-✅ DecisionTree
+<li>Decision Tree
 
-Evaluated model performance
+<li>Random Forest
 
-Displayed confusion matrix & classification report
-<br><br>
+<li>KNN
 
-4. heart.ipynb — Heart Disease Prediction
+<h4>Highlights:</h4>
 
-📌 Overview:
+<li>Preprocessing pipeline
 
-Predicts heart disease using medical measurements.
+<li>Multi-class evaluation
 
-⭐ Notebook Highlights:
+<li>Feature importance
 
-Cleaned and normalized clinical dataset
+<li>Accuracy comparison
 
-Explored correlations using heatmaps
+<h3>2) Regression Models</h3>
 
-Removed outliers
+<h4>Algorithms:</h4>
 
-Built models:
+<li>Linear Regression
 
-✅ SVM
+<li>Ridge & Lasso Regression
 
-✅ KNN
+<li>Decision Tree Regressor
 
-✅ RandomForest
+<li>Random Forest Regressor
 
-✅ DecisionTree
+<h4>Highlights:</h4>
 
-Compared precision, recall, F1-score
+<li>R² score analysis
 
-Displayed confusion matrix
-<br><br>
+<li>Residual error plots
 
-5. itu_gci.ipynb — Global Cybersecurity Index Analysis
+<li>Feature correlations
 
-📌 Overview:
+<h3>3) Clustering & Unsupervised Learning</h3>
 
-Analyzes the cybersecurity readiness of countries using ITU’s GCI data.
+<h4>Algorithms:</h4>
 
-⭐ Notebook Highlights:
+<li>K-Means
 
-Loaded ITU GCI dataset
+<li>Hierarchical Clustering
 
-Ranked countries by cybersecurity index
+<li>DBSCAN
 
-Visualized top & bottom performers
+<h4>Highlights:</h4>
 
-Regional comparison
+<li>Elbow method
 
-Grouped countries by cyber-maturity
+<li>Dendrograms
 
-Created bar, line, and scatter plots
+<li>Cluster visualization
 
-Extracted key insights about global cyber readiness
-<br><br>
+<h3>4) Real-World Case Study Projects</h3>
 
-6. titanic.ipynb — Titanic Survival Prediction
+<h4>Each project includes:</h4>
+
+<li>Data cleaning
+
+<li>EDA & visualization
+
+<li>Model training
+
+<li>Performance summary
+
+<h4>Example topics:</h4>
+
+<li>Fraud detection
+
+<li>Healthcare classification
+
+<li>Customer segmentation
+
+<li>Intrusion detection (IoT/Cybersecurity datasets)
+
+# Technologies & Tools
+
+<li>Python 3.x
+
+<li>Jupyter Notebook
+
+<li>Pandas / NumPy / Scikit-Learn
+
+<li>Matplotlib / Seaborn
+
+<li>Git & GitHub
+
+# Upcoming Enhancements
+
+<li>Add end-to-end ML project with deployment (FastAPI/Streamlit)
+
+<li>Add model versioning using MLflow
+
+<li>Add hyperparameter tuning pipelines
+
+<li>Add deep learning notebooks (ANN/CNN/RNN)
+
+<li>Improve documentation and examples
+
+# Author
+
+Anurag Pallela
  
-📌 Overview:
+Machine Learning Enthusiast | Python Developer
 
-Predicts whether a passenger survived using demographic and ticket attributes.
+pallelaanurag@gmail.com
+ 
+ GitHub: Anurag-2601
 
-⭐ Notebook Highlights:
-
-Loaded Titanic dataset
-
-Handled missing values (Age, Cabin, Embarked)
-
-Encoded categorical features (Sex, Embarked, Pclass)
-
-Performed EDA (survival rates by gender/class/age)
-
-Trained multiple models:
-
-✅ Logistic Regression
-
-✅ Decision Tree
-
-✅ RandomForest
-
-Evaluated using accuracy & confusion matrix
-<br><br>
-
-7. Online_retail(KNN) - Online Retail Customer Classification
-
-📌 Overview:
-
-Predicts customer categories by analyzing behavioral and transactional data from the Online Retail dataset.
-
-⭐ Notebook Highlights:
-
-Loaded and explored the Online Retail dataset for customer classification
-
-Removed duplicates and handled missing values for clean, consistent data
-
-Engineered behavioral features (RFM) and scaled them using StandardScaler
-
-Split data into training and testing sets
-
-Implemented the K-Nearest Neighbors (KNN) classifier
-
-Tuned the model for optimal k value to improve prediction accuracy
-
-Evaluated the model using accuracy score, confusion matrix, and classification report
-
-Visualized decision boundaries and key insights
-
-<br><br>
-
-🧠 Skills Demonstrated Across All Projects:
-
-✅ Data Cleaning & Wrangling
-
-✅ Handling Missing & Imbalanced Data
-
-✅ One-Hot Encoding & Feature Engineering
-
-✅ Scaling & Normalization
-
-✅ Exploratory Data Analysis (EDA)
-
-✅ Classification Models (LR, SVM, RF, DT, KNN)
-
-✅ Evaluation Metrics & Visualization
-
-✅ Working with Financial, Cybersecurity & Healthcare Data
-<br><br>
-
-🛠 Technologies Used:
-
-Python 3.x
-
-Pandas, NumPy
-
-Scikit-learn
-
-Seaborn, Matplotlib
-
-Jupyter Notebook
-
-Imbalanced-learn (SMOTE)
-<br><br>
-B) Unsupervised Learning Models:
-<br><br>
-Unsupervised learning is when a machine learns from data without any labels or predefined answers.
-
-It tries to find hidden patterns, groups, or structures within the data on its own — without being told what the correct output is.
-<br><br>
-Example: Grouping customers with similar buying habits into clusters without knowing anything about them beforehand.
-
-<br><br>
-The Folder Includes:
-<br><br>
-1. Online_retail.ipynb - Online Retail Customer Segmentation using K-Means:
-
-📌 Overview:
-
-The objective is to uncover patterns in customer transactions and group them into clusters for strategic marketing insights.
-<br><br>
-
-⭐ Notebook Highlights:
-
-Loaded dataset containing thousands of online retail transactions
-
-Created RFM (Recency, Frequency, Monetary) features to capture customer purchase behavior
-
-Scaled numerical features using StandardScaler for uniformity
-
-Applied K-Means Clustering and determined the optimal number of clusters using the Elbow Method
-
-Assigned customers to 15 distinct clusters based on behavior
-
-Generated cluster summary statistics to understand spending patterns
-
-Visualized clusters using PCA plots and bar charts for interpretation
-
-
-<br><br>
-📬 Contact:
-
-If you'd like to collaborate or improve any notebook, feel free to create an Issue or Pull Request.
+# If you like this repo, please give it a star!
