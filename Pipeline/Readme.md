@@ -216,6 +216,205 @@ These are highly valued skills for ML Engineer, Data Scientist, and Healthcare A
 ---
 ---
 
+# Bank Marketing Prediction using Machine Learning Pipelines
+
+A production-style ML pipeline for predicting customer subscription behavior in bank marketing campaigns.
+
+## 1. Project Overview
+
+This notebook builds a multi-model machine learning workflow to predict whether a customer will subscribe to a banking term deposit based on demographic & marketing interaction features.
+
+The project uses a robust pipeline architecture that automates:
+
+- Missing value handling
+
+- Numerical scaling
+
+- Categorical encoding
+
+- Model training
+
+- Model comparison
+
+Five ML models are trained using identical preprocessing via scikit-learn Pipelines + ColumnTransformer.
+
+---
+
+## 2. Dataset Description
+
+The dataset used:
+
+     bmarketing.csv
+
+Contains features such as:
+
+- Age
+
+- Job
+
+- Marital status
+
+- Education
+
+- Loan/Housing details
+
+- Previous campaign contact info
+
+- Communication type & duration
+
+- Many categorical fields
+
+**Target variable:**
+
+     df['y'] = df['y'].map({'yes':1, 'no':0})
+
+
+- 1 → Customer subscribed
+
+- 0 → Customer did not subscribe
+
+---
+
+## 3. Data Preprocessing
+
+**Feature–Target Split :**
+
+          X = df.drop('y', axis=1)
+          y = df['y']
+
+**Train–Test Split:**
+
+     x_train, x_test, y_train, y_test = train_test_split(
+         X, y, test_size=0.33, random_state=42)
+
+**Identify Numerical & Categorical Features :**
+
+     numerical_features = X.select_dtypes(include=['int64','float64']).columns.tolist()
+     categorical_features = X.select_dtypes(include=['object']).columns.tolist()
+
+---
+
+## 4. Preprocessing Pipelines
+
+ **Numerical Pipeline:**
+
+- Median imputation
+
+- Standard scaling
+
+          numerical_cols = Pipeline([
+              ("Simple Imputer", SimpleImputer(strategy='mean')),
+              ("Scaling", StandardScaler())
+          ])
+
+**Categorical Pipeline:**
+
+- Most frequent imputation
+
+- One-Hot Encoding
+
+          categorical_cols = Pipeline([
+              ("Simple Imputer", SimpleImputer(strategy='most_frequent')),
+              ("ohe", OneHotEncoder(handle_unknown='ignore'))
+          ])
+
+**Combined ColumnTransformer :**
+
+     preprocessing = ColumnTransformer(
+         transformers=[
+             ("numerical", numerical_cols, numerical_features),
+             ("categorical", categorical_cols, categorical_features)
+         ]
+     )
+
+---
+
+4. Preprocessing Pipelines
+
+**Numerical Pipeline:**
+
+- Median imputation
+
+- Standard scaling
+
+          numerical_cols = Pipeline([
+              ("Simple Imputer", SimpleImputer(strategy='mean')),
+              ("Scaling", StandardScaler())
+          ])
+
+**Categorical Pipeline:**
+
+- Most frequent imputation
+
+- One-Hot Encoding
+
+          categorical_cols = Pipeline([
+              ("Simple Imputer", SimpleImputer(strategy='most_frequent')),
+              ("ohe", OneHotEncoder(handle_unknown='ignore'))
+          ])
+
+**Combined ColumnTransformer:**
+
+     preprocessing = ColumnTransformer(
+         transformers=[
+             ("numerical", numerical_cols, numerical_features),
+             ("categorical", categorical_cols, categorical_features)
+         ]
+     )
+
+---
+
+## 6. Model Comparison
+
+All models are stored in a dictionary and trained/compared:
+
+     models = {
+         "Logistic Regression": lor_pipeline,
+         "Support Vector Machine": svr_pipeline,
+         "Neural Network (MLP)": mlp_pipeline,
+         "k-Nearest Neighbors": knn_pipeline,
+         "XGBoost": xgb_pipeline
+     }
+     
+     results = {}
+     
+     for name, model in models.items():
+         model.fit(x_train, y_train)
+         y_pred = model.predict(x_test)
+         acc = accuracy_score(y_test, y_pred)
+         print(f"{name}: {acc*100:.2f}%")
+
+**Outputs include:**
+
+- Accuracy of each model
+
+- Side-by-side performance comparison
+
+This gives a clear view of which pipeline performs best for the banking dataset.
+
+---
+
+## 7. Skills Demonstrated
+
+This notebook proves strong ML engineering skills:
+
+✔ Proper Feature Engineering 
+
+✔ Clean preprocessing using Pipelines
+
+✔ Correct handling of mixed datatypes
+
+✔ Multiple ML models inside pipelines
+
+✔ Model comparison automation
+
+✔ XGBoost integration (industry-favorite)
+
+✔ High-quality, modular code organization
+
+---
+---
+
 # Intrusion Detection using Machine Learning Pipelines
 
 A complete ML pipeline for detecting cyber intrusions using Random Forest + automated preprocessing.
