@@ -1,1038 +1,410 @@
-# Supervised Learning — Definition
+# Supervised Learning — Definition  
 
-Supervised learning is a type of machine learning where the model is trained using labeled data.
-Each input example has a corresponding target/output value, and the algorithm learns to map inputs to outputs by minimizing prediction errors.
+Supervised learning is a type of machine learning where a model is trained on **labeled data**.  
+Each input example has a corresponding target/output value, and the algorithm learns a mapping from inputs to outputs by minimizing prediction errors.
 
-Examples: Classification (spam detection, disease prediction), Regression (price prediction).
+Typical tasks:
+- **Classification** – e.g., spam detection, risk prediction  
+- **Regression** – e.g., price or score prediction  
+
+---
+
+# FinancialData — Credit Default Prediction (XYZCorp Lending Data)
+
+A complete machine learning workflow to predict whether a loan will **default** using the `XYZCorp_LendingData` dataset.
+
+---
+
+## 1. Project Overview  
+
+This notebook builds a **credit default prediction model** using real-world lending data.  
+It walks through:
+
+- Data inspection and type analysis  
+- Feature selection from high-dimensional data (200+ columns)  
+- Handling missing values and irrelevant columns  
+- Encoding categorical variables  
+- Training and evaluating a classification model  
+
+The goal is to predict the `default_ind` flag for each loan.
+
+---
+
+## 2. Dataset & Features  
+
+- **Domain:** Consumer lending / credit risk  
+- **Target:** `default_ind` (loan default indicator)  
+- **Input features include:**  
+  - Loan amount, interest rate, installment  
+  - Employment-related fields  
+  - Credit history / utilization features  
+  - Geographic and application attributes  
+
+A cleaned feature set (`df_f`) is one-hot encoded into `df_encoded` using `pd.get_dummies`.
+
+---
+
+## 3. Modeling Approach  
+
+- Split data into train/test using `train_test_split`  
+- Standardize numerical features using `StandardScaler`  
+- Train a **Logistic Regression** model as the main classifier  
+- Evaluate using:  
+  - **Accuracy Score**  
+  - **Classification Report** (precision, recall, F1-score)  
+  - **Confusion Matrix** (plotted via `ConfusionMatrixDisplay`)  
+
+The current notebook reports an accuracy of **≈ 82.35%** on the test set.
+
+---
+
+## 4. Skills Demonstrated  
+
+- Working with **high-dimensional financial data**  
+- Feature selection and one-hot encoding  
+- Building a full classification pipeline (scaling → modeling → evaluation)  
+- Interpreting confusion matrices and classification reports  
+- Applying ML to **credit risk / default prediction**  
 
 ---
 ---
 
-#  FinancialData — Machine Learning on Financial Dataset 
+# Online Retail — Customer Country Classification with KNN  
 
-A complete workflow for preprocessing, analyzing, and modeling financial data using classic ML algorithms.
-
-## 1. Project Overview
-
-This notebook explores a real-world financial dataset and applies machine learning techniques to classify/predict financial outcomes.
-It demonstrates end-to-end ML workflow, including:
-
-- Data cleaning
-
-- Exploratory data analysis
-
-- Preprocessing
-
-- Model training
-
-- Evaluation
-
-- Insights for financial decision-making
-
-This project highlights practical ML skills applicable to finance, banking, and risk-assessment industries.
+A K-Nearest Neighbors–based model to classify **customer country** from online retail transaction data.
 
 ---
 
-## 2. Dataset Summary
+## 1. Project Overview  
 
-**Type :** Structured financial dataset
+This notebook uses an **online retail dataset** to predict the **country** associated with each transaction.  
+It demonstrates:
 
-**Features may include :** Customer demographics, income, spending habits, transaction details, account activity, etc.
-
-**Target :**  A financial outcome such as approval status, default risk, or category classification
-
-**Challenges:**
-
-- Missing values
-
-- Outliers
-
-- Feature imbalance
-
-- Categorical → numerical conversion
+- Cleaning transactional data  
+- Encoding categorical attributes  
+- Feature scaling  
+- Training a distance-based classifier  
 
 ---
 
-## 3. Problem Statement
+## 2. Dataset & Target  
 
-To analyze financial behavior and develop a machine learning model that can accurately classify financial outcomes based on structured customer data.
+- **Domain:** E-commerce / Online Retail  
+- **Source file:** `Online_retail.csv`  
+- **Preprocessing steps:**  
+  - Drop `Description` column (unnecessary text)  
+  - Drop rows with missing values  
+  - Apply `LabelEncoder` to all object (categorical) columns  
 
----
-
-## 4. Approach / Methodology
-
--Loaded and inspected dataset structure
-
--Cleaned missing and inconsistent data
-
--Applied encoding, scaling, and feature preprocessing
-
--Visualized distributions, correlations, outliers
-
--Trained ML models such as:
-
-- Logistic Regression
-
-- Decision Trees
-
-- Random Forest
-
-- SVM / KNN (depending on notebook flow)
-
--Evaluated performance using accuracy and classification metrics
-
--Compared algorithm performance to select the best model
+- **Features (X):** All columns except `Country`  
+- **Target (y):** `Country`  
 
 ---
 
-## 5. Algorithms Used
+## 3. Modeling Approach  
 
-**Logistic Regression** – baseline financial classifier
-
-**Decision Tree Classifier** – interpretable model for rule-based decisions
-
-**Random Forest Classifier** – robust ensemble for improved accuracy
-
-**KNN / SVM (optional depending on notebook)**
-
----
-
-## 6. Evaluation Metrics
-
-Typical metrics evaluated:
-
-- Accuracy
-
-- Precision, Recall, F1-Score
-
-- Confusion Matrix
-
---- 
-
-## 7. Key Insights
-
-- Certain financial features (e.g., income, account activity, credit behavior) strongly influence predictions.
-
-- Random Forest tends to outperform simpler models due to its ability to capture non-linear patterns.
-
-- Preprocessing (scaling, encoding) significantly impacts model accuracy.
-
-- Financial datasets often contain noise and imbalance — careful cleaning is crucial.
+- Split data into train/test using `train_test_split` (80/20)  
+- Scale features using `StandardScaler`  
+- Train a **KNeighborsClassifier** with `n_neighbors=5`  
+- Evaluate using:  
+  - **Accuracy Score**  
+  - **Classification Report** (`classification_report`)  
+  - **Confusion Matrix** (printed and visualized with `matplotlib`)  
 
 ---
 
-## 8. What I Learned
+## 4. Skills Demonstrated  
 
-This project demonstrates competency in:
-
-✔ Real-world data cleaning & preprocessing
-
-✔ Applying multiple ML classifiers
-
-✔ Evaluating models with industry-standard metrics
-
-✔ Extracting insights from financial behavior patterns
-
-✔ Understanding how ML is applied in finance and risk analytics
+- End-to-end workflow on **transactional retail data**  
+- Proper handling of categorical features via label encoding  
+- Sensible use of **feature scaling** for KNN  
+- Model evaluation using accuracy, precision, recall, F1-score  
+- Visual interpretation of confusion matrices  
 
 ---
 ---
 
-#  Online Retail Customer Segmentation using KNN
+# banking — Customer Response Prediction (Bank Marketing Data)
 
-A machine learning project for customer behavior analysis in online retail datasets.
-
-## 1. Project Overview
-
-This notebook applies K-Nearest Neighbors (KNN) to an online retail dataset to classify or segment customers based on their purchasing behavior.
-The project demonstrates data preprocessing, feature engineering, exploratory analysis, and classification using a distance-based ML algorithm.
-
-This work is relevant for e-commerce, marketing analytics, customer segmentation, and recommendation systems.
+A classification pipeline for predicting customer response to a **bank marketing campaign**.
 
 ---
 
-## 2. Dataset Summary
+## 1. Project Overview  
 
-- **Domain** : E-commerce / Online Retail
+This notebook uses the `bmarketing.csv` dataset to predict whether a customer will respond positively (`y = yes/no`) to a marketing offer.  
+It covers:
 
-- **Type** : Transactional, structured dataset
-
-- **Common features include** : Customer ID, product ID, quantity, unit price, invoice date, spending, region, frequency of purchase
-
-- **Target** : Customer group / purchase category / spending behaviour (based on your notebook flow)
-
-- **Challenges typically include:**
-
-- Duplicate invoice records
-
-- Missing customer IDs
-
-- Outliers in quantity/price
-
-- Strong skewness in spending patterns
+- Cleaning and deduplication  
+- One-hot encoding of categorical variables  
+- Scaling numeric features  
+- Training and comparing multiple classifiers  
 
 ---
 
-## 3. Problem Statement
+## 2. Dataset & Target  
 
-To classify or segment online retail customers using KNN, enabling better understanding of customer behavior and supporting marketing/personalization strategies.
+- **Domain:** Banking / Direct marketing  
+- **Target:** `y` (mapped from `"yes"/"no"` to `1/0`)  
+- **Feature Engineering:**  
+  - `pd.get_dummies` applied to columns like `job`, `marital`, `education`, `default`, `housing`, `loan`, `contact`, `month`, `day_of_week`, `poutcome`  
 
----
-
-## 4. Approach / Methodology
-
--Loaded and cleaned transactional retail data
-
--Removed duplicates, missing IDs, and outliers
-
--Engineered meaningful features such as:
-
-- Total amount spent
-
-- Purchase frequency
-
-- Average order value
-
--Scaled numerical features using StandardScaler
-
-Split data into training/testing sets
-
--Applied K-Nearest Neighbors classifier
-
--Evaluated predictive performance using accuracy and classification metrics
-
--Analyzed patterns and insights from customer behaviour
+- **Features (X):** All columns except `y`  
+- **Target (y):** Encoded binary outcome  
 
 ---
 
-## 5. Algorithm Used
+## 3. Modeling Approach  
 
-K-Nearest Neighbors (KNN)
+- Train/test split using `train_test_split`  
+- Scale numeric columns with `StandardScaler`  
+- Models trained:  
+  - **Logistic Regression** (baseline classifier)  
+  - **XGBoost (XGBClassifier)** for stronger performance  
+  - **SVM (SVC)** for non-linear decision boundaries  
+- Evaluation:  
+  - **Accuracy Score**  
+  - **Classification Report** for each model  
 
-- Lazy learning, instance-based algorithm
-
-- Works well for structured retail datasets
-
-- Sensitive to scaling, hence feature standardization was applied
-
-- Good choice for baseline classification models in customer analytics
-
----
-
-## 6. Evaluation Metrics
-
-Commonly evaluated metrics include:
-
-- Accuracy Score
-
-- Confusion Matrix
-
-- Classification Report (Precision, Recall, F1-Score)
+(Confusion matrix and visualization utilities are also imported and partially used.)
 
 ---
 
-## 7. Key Insights
+## 4. Skills Demonstrated  
 
-- Customer behavior can be predicted effectively using basic features related to spending and purchase frequency.
-
-- KNN performs well when features are properly normalized and the value of K is optimized.
-
-- Retail datasets display high variability; feature scaling greatly improves performance.
-
-- Identified clusters or classes can support targeted marketing strategies.
-
---- 
-
-## 8. What I Learned
-
-This notebook demonstrates strong competency in:
-
-✔ Cleaning and preparing transactional retail data
-
-✔ Extracting useful customer behavior features
-
-✔ Applying KNN with optimized K value
-
-✔ Understanding distance-based ML methods
-
-✔ Evaluating classification models with standard metrics
-
-✔ Connecting ML results to real business applications
+- Full preprocessing pipeline on **bank marketing data**  
+- Converting categorical “yes/no” outcomes into a proper ML target  
+- Using both **linear (Logistic Regression)** and **non-linear (XGBoost, SVM)** models  
+- Interpreting classification reports to compare approaches  
+- Applying ML to **customer response / campaign analytics**  
 
 ---
 ---
 
-#  banking — Machine Learning for Customer Banking Analytics
+# Cybersecurity Intrusion Detection using Machine Learning  
 
-A complete ML workflow for predicting customer financial behavior in a banking dataset.
-
-## 1. Project Overview
-
-This notebook focuses on applying machine learning techniques to a customer banking dataset to analyze, classify, and predict customer outcomes such as subscription, churn, credit approval, or financial behavior.
-
-The notebook demonstrates end-to-end ML steps:
-
-- Data preprocessing
-
-- Exploratory Data Analysis (EDA)
-
-- Feature preparation
-
-- Training multiple ML models
-
-- Evaluating performance
-
-- Extracting actionable banking insights
-
-This project is highly relevant for financial analytics, credit risk modeling, and customer segmentation roles.
+A classical ML–based **Intrusion Detection System (IDS)** using structured network traffic data.
 
 ---
 
-## 2. Dataset Summary
+## 1. Project Overview  
 
-**Domain:** Banking / Finance
-
-**Type:** Structured customer record data
-
-**Features commonly include:** Age, job type, marital status, education, balance, loan status, campaign contacts, previous outcomes, etc.
-
-**Target:** A binary or multiclass prediction such as:
-
-- Will the customer subscribe to a financial product?
-
-- Will the customer churn?
-
-- Is the customer eligible for credit?
-(depends on notebook setup)
-
-### Typical Challenges
-
-- Imbalanced target classes
-
-- Mixed categorical & numerical fields
-
-- Outliers in financial attributes (e.g., balance, loan amounts)
-
-- Non-linear relationships between features.
-
---- 
-
-## 3. Problem Statement
-
-To build and evaluate machine learning models that can accurately predict customer financial outcomes based on demographic, transactional, and behavioral attributes in a banking dataset.
+This notebook builds a classification model to detect whether a network connection is an **attack or normal** using `intrusion1.csv`.  
+It demonstrates the full IDS pipeline from preprocessing through model comparison.
 
 ---
 
-## 4. Approach / Methodology
+## 2. Dataset & Features  
 
--Loaded and inspected customer banking dataset
+- **Domain:** Cybersecurity / Network Intrusion Detection  
+- **Source:** `intrusion1.csv`  
+- **Preprocessing:**  
+  - Convert `protocol_type` to string  
+  - Fill missing values in `encryption_used` with mode  
+  - Drop `session_id` (non-predictive identifier)  
+  - One-hot encode `protocol_type`, `encryption_used`, `browser_type` using `pd.get_dummies`  
+  - Explore correlations using `.corr()`  
 
--Cleaned missing values and inconsistencies
-
--Encoded categorical features using Label/One-Hot Encoding
-
--Scaled numerical features where needed
-
--Performed EDA:
-
-- Distribution plots
-
-- Correlation heatmap
-
-- Outlier examination
-
--Trained ML models such as:
-
-- Logistic Regression
-
-- Decision Tree
-
-- Random Forest
-
--Evaluated models using classification metrics
-
--Compared model performance to determine the best approach
+- **Features (X):** All columns except `attack_detected`  
+- **Target (y):** `attack_detected` (attack label)  
 
 ---
 
-## 5. Algorithms Used
+## 3. Modeling Approach  
 
-Based on typical flow in your notebook:
-
-**Logistic Regression** – baseline binary classifier
-
-**Decision Tree Classifier** – rule-based segmentation model
-
-**Random Forest Classifier** – robust ensemble for financial prediction
-
----
-
-## 6. Evaluation Metrics
-
-Metrics reported typically include:
-
-- Accuracy
-
-- Precision, Recall, F1-Score
-
-- Confusion Matrix
+- Train/test split using `train_test_split`  
+- Scale numeric columns with `StandardScaler`  
+- Models trained and evaluated:  
+  - **Logistic Regression (lr_model)**  
+  - **DecisionTreeClassifier (dt_model)**  
+  - **RandomForestClassifier (rf)**  
+- Evaluation:  
+  - **Classification Report** for Logistic Regression  
+  - **Accuracy Score** for Logistic Regression and Decision Tree  
+  - **Feature Importance** from the Decision Tree  
+  - Confusion matrix visualization for Random Forest via `ConfusionMatrixDisplay`  
 
 ---
 
-## 7. Key Insights
+## 4. Skills Demonstrated  
 
-- Certain demographic and behavioral features strongly influence the target prediction (e.g., balance, loan status, campaign history).
-
-- Ensemble methods like Random Forest generally outperform standalone classifiers in financial datasets.
-
-- Class imbalance significantly affects model quality — future work may require resampling methods.
-
-- Banking datasets often show feature interactions; tree-based models capture this effectively.
-
----
-
-## 8. What I Learned
-
-This project demonstrates practical skills in:
-
-✔ Applying ML to the finance domain
-
-✔ Understanding customer behavior patterns
-
-✔ Handling categorical & numerical banking features
-
-✔ Comparing multiple ML algorithms
-
-✔ Using evaluation metrics meaningful to banking applications
-
-✔ Generating insights relevant to credit scoring or marketing teams
+- Applying ML in a **security-critical context**  
+- Handling categorical protocol and encryption fields  
+- Building multiple IDS classifiers and comparing them  
+- Using feature importance to understand what drives detections  
+- Evaluating models with security-relevant metrics  
 
 ---
 ---
 
-# Cybersecurity Intrusion Detection using Machine Learning
+# Stroke Risk Prediction (heart.ipynb)
 
-A complete machine learning workflow for detecting cyber intrusions in network traffic data.
-
-## 1. Project Overview
-
-This notebook applies machine learning techniques to detect malicious network activity within an intrusion detection dataset.
-Intrusion detection systems (IDS) play a critical role in cybersecurity, helping organizations identify attacks such as:
-
-- DoS (Denial of Service)
-
-- Probe/Scanning
-
-- R2L (Remote-to-Local)
-
-- U2R (User-to-Root)
-
-- Anomaly traffic
-
-This project demonstrates practical ML skills within a cybersecurity domain, making it highly relevant for roles in SOC (Security Operations), ML Security, Threat Detection, and Cyber Analytics.
+A supervised learning project to predict **stroke occurrence** from patient-level health data.
 
 ---
 
-## 2. Dataset Summary
+## 1. Project Overview  
 
-**Domain :** Cybersecurity / Network Traffic Monitoring
-
-**Type :** Structured dataset of network connections
-
-**Typical features include :**
-
-- Duration
-
-- Protocol type
-
-- Service
-
-- Source bytes / Destination bytes
-
-- Flag
-
-- Connection attempts
-
-- Attack label (Normal vs Intrusion)
-
-**Challenges in IDS datasets :**
-
-- High dimensionality
-
-- Imbalanced attack categories
-
-- Overlapping distributions between normal and anomalous traffic
-
-- Non-linear decision boundaries
-
-The notebook handles these challenges using preprocessing + ML classifiers.
+Despite the filename (`heart.ipynb`), this notebook uses a **stroke prediction** dataset (`heart.csv`) where the target is `stroke`.  
+It builds a model to estimate stroke risk based on demographic and lifestyle features.
 
 ---
 
-## 3. Problem Statement
+## 2. Dataset & Preprocessing  
 
-To build and evaluate machine learning models that can accurately classify network traffic as normal or intrusion, forming the foundation of an automated Intrusion Detection System (IDS).
+- **Domain:** Healthcare / Stroke risk prediction  
+- **Target:** `stroke` (binary indicator)  
+- **Preprocessing steps:**  
+  - Handle missing values in `bmi` using median imputation  
+  - One-hot encode categorical columns:  
+    - `gender`, `ever_married`, `work_type`, `Residence_type`, `smoking_status`  
+  - Compute and visualize correlations via `.corr()`  
 
----
-
-## 4. Approach / Methodology
-
--Loaded cybersecurity intrusion dataset
-
--Cleaned missing values and formatted categorical attributes
-
--Applied label encoding and standardization
-
--Conducted Exploratory Data Analysis (EDA):
-
-- Attack distribution
-
-- Correlation matrix
-
-- Feature relationships
-
--Split the dataset into training and testing sets
-
-Trained models such as:
-
-- Decision Tree Classifier
-
-- Random Forest
-
-- Logistic Regression
-
--Evaluated each model using IDS-specific metrics
-
--Compared results to determine the best-performing algorithm
+- **Features (X):** `df_encoded.drop('stroke', axis=1)`  
+- **Target (y):** `df_encoded['stroke']`  
 
 ---
 
-## 5. Algorithms Used
+## 3. Modeling Approach  
 
-Based on your notebook flow:
+- Train/test split with `train_test_split`  
+- Standardize numeric features with `StandardScaler`  
+- Address class imbalance using **SMOTE** (`SMOTE().fit_resample(X_train, y_train)`)  
+- Models trained:  
+  - **Logistic Regression**  
+  - **DecisionTreeClassifier (dt_model)**  
+  - **RandomForestClassifier (rf, with class_weight='balanced', max_depth=8)**  
 
-**Decision Tree** – interpretable model for rule extraction
-
-**Random Forest** – robust ensemble for non-linear intrusion patterns
-
-**Logistic Regression** – baseline classifier
-
-These algorithms are popular in cybersecurity research for IDS systems.
-
----
-
-## 6. Evaluation Metrics
-
-Because intrusion detection is a high-risk domain, the notebook evaluates:
-
-- Accuracy
-
-- Precision & Recall (very important for intrusion detection)
-
-- F1-score
-
-- Confusion Matrix
+- Evaluation:  
+  - **Accuracy Score** (explicitly calculated for Random Forest)  
+  - Feature importance from the Decision Tree (`feature_importances_`)  
 
 ---
 
-## 7. Key Insights
+## 4. Skills Demonstrated  
 
-- Random Forest often performs best due to its ability to capture complex intrusion patterns.
-
-- Certain features contribute more to detecting anomalies (e.g., connection duration, byte counts, failed attempts).
-
-- Class imbalance may reduce recall for rare attack types.
-
-- Effective preprocessing significantly improves intrusion detection accuracy.
-
----
-
-## 8. What I Learned
-
-This project shows strong understanding of ML + Cybersecurity concepts:
-
-✔ Working with network traffic datasets
-
-✔ Applying ML to detect anomalies
-
-✔ Understanding IDS challenges
-
-✔ Evaluating models with security-critical metrics
-
-✔ Drawing insights relevant to SOC teams 
-
-✔ Comparing classical ML methods for security tasks
-
-This notebook adds GREAT value to your resume for cybersecurity + ML internships.
+- Healthcare-focused ML on **stroke risk**  
+- Handling missing clinical attributes (BMI)  
+- Managing **class imbalance** using SMOTE  
+- Comparing tree-based and linear models for medical prediction  
+- Interpreting feature importance for clinical decision support  
 
 ---
 ---
 
-# ITU GCI — Global Cybersecurity Index Analysis using Machine Learning
+# ITU GCI — Global Cybersecurity Index Regression  
 
-An analytical and machine-learning driven study of global cybersecurity readiness using ITU GCI data.
-
-## 1. Project Overview
-
-This notebook analyzes the International Telecommunication Union (ITU) Global Cybersecurity Index (GCI) dataset to understand global cybersecurity maturity across countries.
-
-It leverages data analysis and machine learning techniques to explore patterns, classify countries, and evaluate what factors contribute to strong cybersecurity posture.
-
-This project connects data science with cybersecurity policy, making it valuable for roles in cyber analytics, digital governance, ML research, and global risk assessment.
+A regression-focused analysis of the **International Telecommunication Union Global Cybersecurity Index (ITU GCI)**.
 
 ---
 
-## 2. Dataset Summary
+## 1. Project Overview  
 
-**Domain :** Cybersecurity / Government Policy / International Benchmarking
+This notebook analyzes the `ITU_GCI.csv` dataset and predicts the **GCI score (`OBS_VALUE`)** based on country and indicator metadata.  
+It combines:
 
-**Type :** Structured dataset with country-wise cybersecurity indicators
-
-**Common features include :**
-
-- Legal measures
-
-- Technical measures
-
-- Organizational measures
-
-- Capacity development
-
-- Cooperation indicators
-
-- Overall GCI score
-
-**Dataset Challenges :**
-
-- Varying scales across indicator scores
-
-- Missing/uneven data across countries
-
-- Strong correlations between preparedness metrics
-
-- Geopolitical imbalance (some regions well-scored, some under-represented)
+- Exploratory data analysis  
+- Categorical encoding  
+- Regression modeling  
+- Error and goodness-of-fit evaluation  
 
 ---
 
-## 3. Problem Statement
+## 2. Dataset & Features  
 
-To analyze and model the ITU GCI dataset in order to:
+- **Domain:** Global cybersecurity readiness / policy metrics  
+- **Target:** `OBS_VALUE` (numerical GCI score)  
+- **Preprocessing:**  
+  - Inspect dtypes, missing values, summary statistics  
+  - Compute correlations using only numeric columns (`numeric_df`)  
+  - One-hot encode categorical metadata columns such as:  
+    - `REF_AREA`, `REF_AREA_LABEL`  
+    - `INDICATOR`, `INDICATOR_LABEL`  
+    - `UNIT_MEASURE_LABEL`, `TIME_PERIOD`  
 
-- Understand global cybersecurity readiness
-
-- Identify patterns across countries
-
-- Classify countries into cybersecurity maturity levels
-
-- Explore factors contributing most to cybersecurity development
-
---- 
-
-## 4. Approach / Methodology
-
--Loaded and cleaned the ITU GCI dataset
-
--Handled missing values and standardized features
-
--Performed Exploratory Data Analysis (EDA):
-
-- Country rankings
-
-- Regional comparisons
-
-- Correlation matrices
-
-- Score distributions
-
--Applied ML tasks such as:
-
-- Classification of high- vs low-prepared countries
-
-- Clustering regions with similar cybersecurity maturity
-
--Evaluated model performance with standard metrics
-
--Extracted insights about international cybersecurity posture
+- **Features (X):** One-hot–encoded categorical metadata  
+- **Target (y):** `OBS_VALUE`  
 
 ---
 
-## 5. Algorithms Used
+## 3. Modeling Approach  
 
-Depending on your notebook flow, the following are commonly applied:
+- Train/test split using `train_test_split`  
+- Scale numeric columns with `StandardScaler`  
+- Models used (as per code imports and usage):  
+  - **LinearRegression** (baseline regressor)  
+  - **DecisionTreeRegressor**  
+  - **RandomForestRegressor** (referred to as `rf_model` in the code)  
 
-**KMeans Clustering —** to identify country groups based on cybersecurity readiness
-
-**Decision Tree / Random Forest —** to classify countries into cybersecurity tiers
-
-**Logistic Regression —** baseline classifier
-
-This demonstrates both unsupervised and supervised ML.
-
----
-
-## 6. Evaluation Metrics
-
-For classification tasks:
-
-- Accuracy
-
-- Precision, Recall, F1-score
-
-- Confusion Matrix
-
-For clustering:
-
-- Inertia
-
-- Silhouette Score
-
-- Cluster visualization
+- Evaluation (on Random Forest predictions):  
+  - **Mean Squared Error (MSE)**  
+  - **R² Score** (coefficient of determination)  
+- Feature importance is computed for the Random Forest model to rank the most influential features.
 
 ---
 
-## 7. Key Insights
+## 4. Skills Demonstrated  
 
-- Certain dimensions (legal, organizational, technical) strongly determine the overall GCI score.
-
-- Countries cluster naturally into high, medium, and low cybersecurity maturity groups.
-
-- Regions such as Europe and North America show consistently higher preparedness, while developing regions show mixed performance.
-
-- ML models can predict cybersecurity preparedness categories with meaningful accuracy.
-
----
-
-## 8. What You Learned
-
-This project demonstrates: 
-
-✔ Linking global cybersecurity metrics with data science 
-
-✔ Performing EDA on international datasets
-
-✔ Applying ML for classification + clustering
-
-✔ Understanding feature influence in policy-level indicators
-
-✔ Creating visualizations that communicate global readiness
-
-✔ Translating ML results into cyber governance insights
-
-This is highly valuable for internships in cyber analytics, ML security research, government data units, and international digital policy organizations.
+- Working with **country-level cybersecurity metrics**  
+- Transforming rich categorical metadata into usable features  
+- Framing cybersecurity readiness as a **regression problem**  
+- Evaluating models with MSE and R²  
+- Using feature importance to understand global cybersecurity drivers  
 
 ---
 ---
 
-# Heart Disease Prediction using Machine Learning
+# Titanic — Survival Prediction (Classification)
 
-A machine learning project for predicting the likelihood of heart disease using clinical health indicators.
-
-## 1. Project Overview
-
-This notebook applies supervised machine learning models to a medical dataset to predict whether a patient is at risk of heart disease.
-Heart disease prediction is a vital application of AI in healthcare, assisting doctors and medical systems in early diagnosis and preventive treatment.
-
-This project highlights your ability to work with healthcare data, perform EDA, train ML models, evaluate performance, and extract medically relevant insights.
+A classic ML classification project predicting Titanic passenger survival.
 
 ---
 
-## 2. Dataset Summary
+## 1. Project Overview  
 
-**Domain :** Healthcare / Cardiology
-
-**Type :** Structured medical dataset
-
-**Common features include :**
-
-- Age
-
-- Sex
-
-- Chest pain type
-
-- Resting blood pressure
-
-- Cholesterol
-
-- Fasting blood sugar
-
-- ECG results
-
-- Maximum heart rate
-
-- Exercise-induced angina
-
-- ST depression & slope
-
-- **Target:** Presence (1) or absence (0) of heart disease
-
-**Dataset Challenges :**
-
-- Mixed categorical + numerical features
-
-- Possible class imbalance
-
-- Correlation between clinical variables
-
-- Non-linear decision boundaries.
+This notebook uses the **Kaggle Titanic dataset** (`titanic.csv`) to predict whether a passenger survived the disaster.  
+It demonstrates a full ML workflow on a well-known benchmark dataset.
 
 ---
 
-## 3. Problem Statement
+## 2. Dataset & Preprocessing  
 
-To develop a machine learning model that can accurately classify patients as heart disease positive or negative, based on their clinical attributes.
+- **Domain:** Transportation / Survival analysis  
+- **Target:** `Survived` (0 = no, 1 = yes)  
+- **Preprocessing steps:**  
+  - Impute missing `Age` with mean  
+  - Fill missing `Cabin` with `'U'` and `Embarked` with mode  
+  - Drop non-useful identifiers: `PassengerId`, `Ticket`, `Name`  
+  - One-hot encode `Sex`, `Embarked`, `Cabin` using `pd.get_dummies(drop_first=True)`  
+  - Explore correlations via `.corr()`  
 
-This serves as a decision-support tool for medical risk assessment.
-
----
-
-## 4. Approach / Methodology
-
--Loaded and explored the heart disease dataset
-
--Checked missing data, outliers, and feature distributions
-
--Encoded categorical variables and normalized numerical features
-
--Performed EDA using:
-
-- Correlation matrix
-
-- Countplots
-
-- Feature distribution plots
-
-- Split dataset into training & testing sets
-
--Trained ML models including:
-
-- Logistic Regression
-
-- KNN
-
-- Decision Tree
-
-- Random Forest
-
--Evaluated performance using healthcare-relevant metrics
-
--Compared models and selected best performer
+- **Features (X):** `df.drop('Survived', axis=1)`  
+- **Target (y):** `df['Survived']`  
 
 ---
 
-## 5. Algorithms Used
+## 3. Modeling Approach  
 
-**Logistic Regression –** strong baseline classifier
+- Train/test split using `train_test_split`  
+- Models trained:  
+  - **Logistic Regression** (baseline)  
+  - **DecisionTreeClassifier (dt_model)**  
+  - **RandomForestClassifier (rf)**  
 
-**K-Nearest Neighbors (KNN) –** instance-based model
-
-**Decision Tree Classifier –** interpretable clinical decision rules
-
-**Random Forest Classifier –** robust, high-performing ensemble model
-
-These models are commonly used in medical ML research.
-
----
-
-## 6. Evaluation Metrics
-
-Since healthcare models require high recall and balanced metrics, the notebook evaluates:
-
-- Accuracy
-
-- Precision, Recall, F1-score
-
-- Confusion Matrix
-
---- 
-
-## 7. Key Insights
-
-- Certain features (chest pain type, age, max heart rate, ST depression) highly impact prediction.
-
-- Ensemble models like Random Forest usually outperform simpler models in medical datasets.
-
-- Proper scaling significantly improves KNN performance.
-
-- Logistic Regression offers interpretability valuable in healthcare applications.
+- Evaluation:  
+  - **Accuracy Score** (for Random Forest and Decision Tree)  
+  - **Classification Report**  
+  - **Confusion Matrix** plotted via `ConfusionMatrixDisplay`  
+  - **Feature Importance** extracted from the Decision Tree model  
 
 ---
 
-8. What I Learned
+## 4. Skills Demonstrated  
 
-This project highlights your strength in:
-
-✔ Applying ML to healthcare data
-
-✔ Understanding medical features & their importance
-
-✔ Model evaluation for clinical datasets
-
-✔ Communicating insights in meaningful ways
-
-✔ Handling categorical and continuous variables
-
-✔ Comparing ML algorithms for real-world diagnosis tasks
+- Handling missing and categorical data in a well-known public dataset  
+- Building multiple baseline and tree-based classifiers  
+- Comparing performance and interpretability  
+- Using feature importance and confusion matrices to interpret model behavior  
 
 ---
 ---
-
-# Titanic Survival Prediction using Machine Learning
-
-A complete ML workflow predicting passenger survival from the Titanic disaster dataset.
-
-## 1. Project Overview
-
-This notebook uses the well-known Titanic dataset from Kaggle to build machine learning models that predict whether a passenger survived based on demographic, socioeconomic, and travel-related features.
-
-The project showcases your ability to:
-
-- Clean and preprocess real-world categorical data
-
-- Perform data exploration and visualization
-
-- Engineer meaningful features
-
-- Train and evaluate multiple ML models
-
-- Interpret results in a clear, structured way
-
-This is a strong demonstration of ML fundamentals for internships.
-
----
-
-## 2. Dataset Summary
-
-**Domain :** Transportation / Demographics / Survival Analysis
-
-**Source :** Titanic dataset (Kaggle)
-
-**Common features include :**
-
-- Passenger class (Pclass)
-
-- Sex
-
-- Age
-
-- Fare
-
-- Siblings/Spouses aboard (SibSp)
-
-- Parents/Children aboard (Parch)
-
-- Embarked location
-
-- Survival label (0 = No, 1 = Yes)
-
-**Dataset Challenges :**
-
-- Missing age values
-
-- Highly imbalanced survival patterns between genders and classes
-
-- Non-linear relationships
-
-- Categorical encoding needed (Sex, Embarked)
-
----
-
-## 3. Problem Statement
-
-To develop a supervised machine learning model that predicts whether a passenger survived the Titanic disaster based on their personal attributes and travel details.
-
----
-
-## 4. Approach / Methodology
-
--Loaded Titanic dataset
-
--Handled missing values (Age, Embarked)
-
--Performed EDA:
-
-- Survival rates by gender
-
-- Survival rates by class
-
-- Age distribution
-
-- Heatmaps + correlations
-
-- Encoded categorical features (Sex, Embarked)
-
-- Scaled numerical features (if required)
-
-- Created training and testing splits
-
--Trained classification models including:
-
-- Logistic Regression
-
-- Decision Tree
-
-- Random Forest
-
--Evaluated models using standard classification metrics
-
--Compared model performance and identified best model
-
----
-
-## 5. Algorithms Used
-
-**Logistic Regression —** interpretable baseline
-
-**Decision Tree —** feature-based decision paths
-
-**Random Forest —** ensemble method with better generalization
-
-These models help demonstrate a strong grasp of ML classification fundamentals.
-
----
-
-## 6. Evaluation Metrics
-
-Common metrics included:
-
-- Accuracy
-
-- Precision, Recall, F1-score
-
-- Confusion Matrix
-
----
-
-## 7. Key Insights
-
-- Gender is the strongest predictor of survival — females had significantly higher survival rates.
-
-- Passenger class (Pclass) strongly influences survival; first-class passengers have the highest chance.
-
-- Children had higher survival probability due to evacuation priority.
-
--  Random Forest often gives the best accuracy due to handling non-linear patterns.
-
----
-
-8. What I  Learned
-
-This project demonstrates your ability to:
-
-✔ Handle missing and noisy data
-
-✔ Perform meaningful EDA
-
-✔ Apply one-hot encoding and preprocessing
-
-✔ Train and compare classical ML models
-
-✔ Interpret patterns in human survival behavior
-
-✔ Present insights with visualizations and explanations
-
-These are essential skills for machine learning and data analyst internship roles.
-
----
----
-
