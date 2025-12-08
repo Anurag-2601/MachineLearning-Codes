@@ -216,3 +216,228 @@ These are highly valued skills for ML Engineer, Data Scientist, and Healthcare A
 ---
 ---
 
+# Intrusion Detection using Machine Learning Pipelines
+
+A complete ML pipeline for detecting cyber intrusions using Random Forest + automated preprocessing.
+
+## 1. Project Overview
+
+This notebook builds a supervised machine learning pipeline to detect cyber intrusions in network traffic data. Using a combination of:
+
+- Automatic preprocessing (imputation, scaling, encoding)
+
+- Scikit-learn Pipelines
+
+- ColumnTransformer for mixed data types
+
+- RandomForestClassifier
+
+- Hyperparameter tuning using GridSearchCV
+
+…it demonstrates a production-style implementation of intrusion detection suitable for cybersecurity analytics, SOC automation, and ML-security workflows.
+
+---
+
+## 2. Dataset Description
+
+The dataset used is:
+
+          intrusion1.csv
+
+
+It contains network traffic features such as:
+
+- Encryption usage
+
+- Communication characteristics
+
+- Numerical & categorical protocol attributes
+
+- **Target column:** attack_detected
+
+   - 0 = normal traffic
+
+   - 1 = intrusion attempt
+
+ Missing Value Handling 
+
+The column encryption_used has missing values, filled using its mode:
+
+     df['encryption_used'] = df['encryption_used'].fillna(df['encryption_used'].mode()[0])
+
+---
+
+## 3. Data Preprocessing
+
+Feature/Target Split:
+
+     x = df.drop('attack_detected', axis=1)
+     y = df['attack_detected']
+
+ Train–Test Split:
+ 
+     x_train, x_test, y_train, y_test = train_test_split(
+         x, y, test_size=0.33, random_state=42)
+
+Identify Numerical & Categorical Columns:
+
+     num_features = x.select_dtypes(include=['int64','float64']).columns.tolist()
+     cat_features = x.select_dtypes(include=['object']).columns.tolist()
+
+Numerical Pipeline:
+
+- Mean imputation
+
+- Standard Scaling
+
+          numerical_cols = Pipeline([
+              ("simple_imputer", SimpleImputer(strategy='mean')),
+              ("scaling", StandardScaler())
+          ])
+
+Categorical Pipeline::
+
+- Most frequent imputation
+
+- One-Hot Encoding
+
+          categorical_cols = Pipeline([
+              ("simple_imputer", SimpleImputer(strategy='most_frequent')),
+              ("ohe", OneHotEncoder(handle_unknown='ignore', sparse_output=False))
+          ])
+
+Combined Preprocessor (ColumnTransformer):
+
+     preprocessing = ColumnTransformer([
+         ("categorical", categorical_cols, cat_features),
+         ("numerical", numerical_cols, num_features)
+     ])
+
+
+This ensures both numeric and categorical preprocessing happen automatically.
+
+---
+
+## 4. Model Construction (Random Forest Pipeline)
+
+A full end-to-end pipeline is built:
+
+          pipe = Pipeline([
+              ("preprocessing", preprocessing),
+              ("estimator", RandomForestClassifier())
+          ])
+
+Model Training: 
+
+     pipe.fit(x_train, y_train)
+
+Prediction:
+
+     y_pred = pipe.predict(x_test)
+
+---
+
+## 5. Model Evaluation 
+
+          acc = accuracy_score(y_test, y_pred)
+          print("Accuracy Score:", round(acc * 100, 2), "%")
+
+
+This gives the base RandomForest accuracy before tuning.
+
+---
+
+## 6. Hyperparameter Tuning (GridSearchCV)
+
+The notebook runs GridSearchCV to improve the model:
+
+     param_grid = {
+         "estimator__n_estimators": [100, 200],
+         "estimator__max_depth": [None, 10, 20],
+         "estimator__min_samples_split": [2, 5],
+         "estimator__min_samples_leaf": [1, 2]
+     }
+
+
+Grid search is applied on the entire pipeline:
+
+     grid = GridSearchCV(
+         estimator=pipe,
+         param_grid=param_grid,
+         cv=3,
+         scoring="accuracy",
+         n_jobs=-1,
+         verbose=2
+     )
+
+
+Final evaluation:
+
+     y_pred = grid.best_estimator_.predict(x_test)
+     print("Test accuracy:", accuracy_score(y_test, y_pred)*100, "%")
+
+--- 
+
+6. Hyperparameter Tuning (GridSearchCV)
+
+The notebook runs GridSearchCV to improve the model:
+
+          param_grid = {
+              "estimator__n_estimators": [100, 200],
+              "estimator__max_depth": [None, 10, 20],
+              "estimator__min_samples_split": [2, 5],
+              "estimator__min_samples_leaf": [1, 2]
+          }
+
+
+Grid search is applied on the entire pipeline:
+
+          grid = GridSearchCV(
+              estimator=pipe,
+              param_grid=param_grid,
+              cv=3,
+              scoring="accuracy",
+              n_jobs=-1,
+              verbose=2
+          )
+
+
+Final evaluation:
+
+          y_pred = grid.best_estimator_.predict(x_test)
+          print("Test accuracy:", accuracy_score(y_test, y_pred)*100, "%")
+
+---
+
+## 7. Skills Demonstrated
+
+This notebook demonstrates strong ML engineering skills:
+
+✔ Handling real intrusion datasets 
+
+✔ Pipeline-based preprocessing
+
+✔ Encoding + scaling via ColumnTransformer
+
+✔ RandomForest classification
+
+✔ Hyperparameter tuning (GridSearchCV)
+
+✔ Clean, modular ML code suitable for production
+
+✔ Understanding of cybersecurity ML workflow
+
+These are highly valuable for internships in:
+
+- Cybersecurity analytics
+
+- Threat detection
+
+- Machine learning engineering
+
+- SOC automation with AI
+
+---
+---
+
+
