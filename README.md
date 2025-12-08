@@ -1,132 +1,197 @@
-Machine Learning Codes — Clean & Modular Implementations
+# Machine Learning Codes — Clean & Modular Implementations
 
 A curated collection of Machine Learning algorithms, implemented with clarity, modularity, and practical understanding.
 This repository is designed for students, beginners, and interview preparation, as well as for building a strong ML foundation.
 
-🎯 Purpose
+---
+
+# Purpose
 
 This repository serves as a learning + reference guide, offering clean implementations of essential machine learning algorithms.
 The goal is to provide:
 
-Easy-to-read code
+- Easy-to-read code
 
-Simple mathematical intuition
+- Simple mathematical intuition
 
-Well-organized modules
+- Well-organized modules
 
-Practical examples in Python
+- Practical examples in Python
 
-🧠 What’s Inside
-🔹 Supervised Learning
+---
 
-Linear Regression
+ # What’s Inside
 
-Logistic Regression
+### Supervised Learning :
 
-Decision Tree
+- Linear Regression
 
-K-Nearest Neighbors (KNN)
+- Logistic Regression
 
-Support Vector Machine (SVM)
+- Decision Tree
 
-Naive Bayes
+- K-Nearest Neighbors (KNN)
 
-Random Forest (optional — add if present)
+- Support Vector Machine (SVM)
 
-🔹 Unsupervised Learning
+- Naive Bayes
 
-K-Means Clustering
+- Random Forest (optional — add if present)
 
-Hierarchical Clustering
+### Unsupervised Learning :
 
-PCA (Principal Component Analysis)
+- K-Means Clustering
 
-🔹 Deep Learning (Basics)
+- Hierarchical Clustering
 
-Simple Neural Network
+- PCA (Principal Component Analysis)
 
-Activation Functions
+### Deep Learning (Basics):
 
-Loss Functions
+- Simple Neural Network
 
-Backpropagation basics (optional)
+- Activation Functions
 
-🔹 Utilities
+- Loss Functions
 
-Train/Test Split
+### Utilities
 
-Evaluation Metrics (Accuracy, Precision, Recall, F1-score)
+- Train/Test Split
 
-Confusion Matrix
+- Evaluation Metrics (Accuracy, Precision, Recall, F1-score)
 
-Data Preprocessing helpers
+- Confusion Matrix
 
-How to Use
+- Data Preprocessing helpers
+
+---
+
+# Repository Structure
+
+    MachineLearning-Codes/
+    │
+    ├── README.md
+    ├── requirements.txt
+    │
+    ├── datasets/
+    │   └── (optional sample datasets)
+    │
+    ├── notebooks/
+    │   ├── LinearRegression.ipynb
+    │   ├── LogisticRegression.ipynb
+    │   ├── NaiveBayes.ipynb
+    │   ├── DecisionTree.ipynb
+    │   ├── KMeans.ipynb
+    │   ├── PCA.ipynb
+    │   ├── SVM.ipynb
+    │   ├── DBSCAN.ipynb
+    │   └── (all your notebook files moved here)
+    │
+    ├── classification/
+    │   ├── logistic_regression.py
+    │   ├── decision_tree.py
+    │   ├── naive_bayes.py
+    │   ├── svm.py
+    │   └── knn.py
+    │
+    ├── regression/
+    │   ├── linear_regression.py
+    │   ├── polynomial_regression.py
+    │   └── ridge_regression.py  (optional future)
+    │
+    ├── clustering/
+    │   ├── k_means.py
+    │   ├── dbscan.py
+    │   └── hierarchical_clustering.py
+    │
+    ├── dimensionality_reduction/
+    │   └── pca.py
+    │
+    ├── deep_learning/
+    │   ├── simple_neural_network.py
+    │   ├── activation_functions.py
+    │   └── loss_functions.py
+    │
+    └── utils/
+        ├── preprocessing.py
+        ├── metrics.py
+        └── visualization.py
+
+
+# How to Use
+
 1. Clone the Repository
-git clone https://github.com/yourusername/MachineLearning-Codes.git
-cd MachineLearning-Codes
+
+        git clone https://github.com/yourusername/MachineLearning-Codes.git
+        cd MachineLearning-Codes
 
 2. Install Required Libraries
-pip install -r requirements.txt
+
+        pip install -r requirements.txt
 
 3. Run Any Algorithm
-python classification/logistic_regression.py
+
+        python classification/logistic_regression.py
 
 
 OR open Jupyter notebooks:
 
-jupyter notebook notebooks/
+    jupyter notebook notebooks/
 
-🧪 Example Outputs
+--- 
+ 
+ # Example Outputs
 
-Each algorithm includes:
+### Each algorithm includes:
 
-Dataset loading
+- Dataset loading
 
-Preprocessing
+- Preprocessing
 
-Model training
+- Model training
 
-Predictions
+- Predictions
 
-Evaluation metrics
+- Evaluation metrics
 
-🏆 Why This Repository Matters
+  ---
 
-This project demonstrates:
+# Why This Repository Matters
 
-Strong understanding of ML fundamentals
+### This project demonstrates:
 
-Ability to write clean and modular code
+- Strong understanding of ML fundamentals
 
-Consistent folder organization
+- Ability to write clean and modular code
 
-Practical application of algorithms
+- Consistent folder organization
 
-Readability and industry-aligned coding style
+- Practical application of algorithms
 
-These qualities make it valuable for:
+- Readability and industry-aligned coding style
 
-Internship applications
+### These qualities make it valuable for:
 
-ML interview prep
+- Internship applications
 
-Resume/GitHub portfolio
+- ML interview prep
 
-Beginners studying ML algorithms
+- Resume/GitHub portfolio
 
-🔮 Future Enhancements
+- Beginners studying ML algorithms
 
-Add Gradient Boosting, XGBoost, LightGBM
+---
 
-Add hyperparameter tuning examples
+# Future Enhancements
 
-Add visualization scripts for each model
+- Add visualization scripts for each model
 
-Add end-to-end ML pipelines
+- Add end-to-end ML pipelines
 
-Add dataset folders with sample CSVs
+- Add dataset folders with sample CSVs
 
-License
+---
+
+# License
 
 MIT License — free to use and modify.
