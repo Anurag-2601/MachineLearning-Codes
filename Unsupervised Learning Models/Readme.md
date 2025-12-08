@@ -1,164 +1,80 @@
-## Unsupervised Learning — Definition
+# Unsupervised Learning — Definition
 
-Unsupervised learning is a machine learning approach where the model is trained on unlabeled data.
-The algorithm tries to find hidden patterns, structures, or relationships within the dataset without predefined output labels.
+Unsupervised learning trains models on **unlabeled data** to discover hidden structure: clusters, groups, anomalies, or lower-dimensional representations.  
+Common tasks:
+- **Clustering** — group similar samples (e.g., customer/product segmentation).  
+- **Dimensionality reduction** — compress features while preserving structure (e.g., PCA).  
 
-Examples: Clustering (customer segmentation), Dimensionality Reduction (PCA).
+---
+
+#  Online Retail — K-Means Clustering (OnlineRetail.ipynb)
+
+**Purpose:** discover product/purchase patterns by clustering transactions on `Quantity` and `UnitPrice`.  
+This notebook provides a practical, business-focused unsupervised workflow for e-commerce analytics.
+
+## Project Summary
+- Input: online retail transaction log (InvoiceNo, StockCode, Quantity, UnitPrice, CustomerID, Country).  
+- Goal: group transactions/products to surface business-actionable clusters (fast-moving SKUs, bulk purchases, high-value low-volume items).
+
+## What the Notebook Contains (step-by-step)
+1. **Data loading & inspection**
+   - Read CSV into `df`
+   - Quick shape, dtypes, missing count checks
+
+2. **Preprocessing**
+   - Remove noisy text field: `df.drop('Description', axis=1)`  
+   - Handle missing rows (drop or impute depending on notebook cell)  
+   - Label encode categorical identifiers used for analysis:
+     ```python
+     le = LabelEncoder()
+     df['Country'] = le.fit_transform(df['Country'])
+     df['StockCode'] = le.fit_transform(df['StockCode'])
+     ```
+
+3. **Feature selection**
+   - Use `Quantity` and `UnitPrice` as clustering features:
+     ```python
+     X = df[['Quantity', 'UnitPrice']]
+     ```
+
+4. **Feature scaling**
+   - Standardize features because K-Means is distance-based:
+     ```python
+     scaler = StandardScaler()
+     X_scaled = scaler.fit_transform(X)
+     ```
+
+5. **Determine optimal K (Elbow Method)**
+   - Compute inertia over a K range and plot the elbow to select `optimal_k`.
+
+6. **Train K-Means**
+   - Fit K-Means with `n_clusters=optimal_k`, predict cluster labels:
+     ```python
+     kmeans = KMeans(n_clusters=optimal_k, random_state=42)
+     clusters = kmeans.fit_predict(X_scaled)
+     df['cluster'] = clusters
+     ```
+
+7. **Postprocessing & Export**
+   - Add cluster labels back to `df`, inspect cluster centroids & sizes  
+   - Export final dataset: `df.to_excel("OnlineRetail_cluster.xlsx", index=False)`
+
+## Evaluation / Validation
+- Elbow plot (inertia vs k) to choose K  
+- Optional: silhouette scores for cluster quality
+
+## Key Business Insights
+- Clusters separate **high-value low-volume** vs **low-price high-volume** items.  
+- Useful for inventory prioritization, targeted promotions, and SKU lifecycle analysis.
+
+## Skills Demonstrated
+- Data cleaning & encoding  
+- Feature selection for clustering  
+- Proper scaling for distance algorithms  
+- Elbow method & silhouette validation  
+- Exporting clustered data for BI use
 
 ---
 ---
 
-# Online Retail Clustering using K-Means
 
-A practical unsupervised machine learning project for analyzing retail transaction patterns.
-
-## 1. Project Overview
-
-This notebook performs K-Means clustering on an online retail dataset to uncover meaningful patterns in product quantities and pricing.
-The project demonstrates the full workflow of data preprocessing, feature engineering, scaling, clustering, and exporting results, making it valuable for e-commerce analytics and machine learning portfolios.
-
----
-
-## 2. Dataset Description
-
-The dataset contains online retail transaction records with columns such as:
-
-- InvoiceNo
-
-- StockCode
-
-- Description (removed during preprocessing)
-
-- Quantity
-
-- UnitPrice
-
-- CustomerID
-
-- Country
-
-This dataset is commonly used for analyzing product performance and customer behavior patterns.
-
----
-
-## 3. Data Preprocessing
-
-The notebook carries out several cleaning and formatting steps:
-
- Dropped unnecessary columns
-
---> df.drop('Description', axis=1)
-
- Encoded categorical features
-
-Label Encoding was used for:
-
-- Country
-
-- StockCode
-
---> le = LabelEncoder()
-
---> df['Country'] = le.fit_transform(df['Country'])
-
---> df['StockCode'] = le.fit_transform(df['StockCode'])
-
-
-These steps make the data ML-ready.
-
----
-
-## 4. Feature Selection
-
-The clustering model uses:
-
-- Quantity
-
-- UnitPrice
-
---> X = df[['Quantity', 'UnitPrice']]
-
-
-These two features help identify purchasing and price-related behavior patterns.
-
----
-
-##  5. Feature Scaling
-
-Since K-Means is distance-based, data was standardized:
-
---> scaler = StandardScaler()
-
---> X_scaled = scaler.fit_transform(X)
-
-
-Scaling ensures all features contribute equally to the distance calculations.
-
----
-
-## 6. Finding Optimal K (Elbow Method)
-
-The notebook computes inertia values for multiple K values and plots the Elbow Curve:
-
--->  for k in K:
-        model = KMeans(n_clusters=k, random_state=42)
-
-
-This helps determine the most suitable number of clusters.
-
----
-
-## 7. Training the K-Means Model
-
-After identifying the optimal cluster count, the model is trained:
-
---> kmeans = KMeans(n_clusters=optimal_k, random_state=42)
-
---> clusters = kmeans.fit_predict(X_scaled)
-
-
-Cluster labels are added back to the dataset for further analysis.
-
----
-
-## 8. Exporting Results
-
-The final clustered dataset is exported as an Excel file:
-
---> df.to_excel("OnlineRetail_cluster.xlsx", index=False)
-
-
-This allows for easy business interpretation and external visualization.
-
----
-
-## 9. Key Insights
-
-- Products can be grouped by purchase volume and price.
-
-- Helps identify fast-moving, high-value, and low-value items.
-
-- Useful for inventory planning, customer segmentation, and promotional targeting.
-
-- K-Means clustering provides a quick, effective way to analyze retail behavioral patterns.
-
----
-
-## 10. Skills Demonstrated
-
-This notebook highlights your competency in:
-
-✔ Data Cleaning & Encoding
-
-✔ Feature Scaling
-
-✔ Unsupervised Learning (K-Means)
-
-✔ Elbow Method Analysis
-
-✔ Data Export & Reporting
-
-✔ Practical retail analytics
-
----
----
