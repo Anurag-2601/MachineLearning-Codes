@@ -5,6 +5,9 @@ Each input example has a corresponding target/output value, and the algorithm le
 
 Examples: Classification (spam detection, disease prediction), Regression (price prediction).
 
+---
+---
+
 #  FinancialData — Machine Learning on Financial Dataset 
 
 A complete workflow for preprocessing, analyzing, and modeling financial data using classic ML algorithms.
