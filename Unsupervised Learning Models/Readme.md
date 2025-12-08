@@ -8,6 +8,10 @@ Examples: Clustering (customer segmentation), Dimensionality Reduction (PCA).
 ---
 ---
 
+# Online Retail Clustering using K-Means
+
+A practical unsupervised machine learning project for analyzing retail transaction patterns.
+
 ## 1. Project Overview
 
 This notebook performs K-Means clustering on an online retail dataset to uncover meaningful patterns in product quantities and pricing.
