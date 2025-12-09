@@ -66,58 +66,6 @@ The goal is to provide:
 
 ---
 
-# Repository Structure
-
-    MachineLearning-Codes/
-    │
-    ├── README.md
-    ├── requirements.txt
-    │
-    ├── datasets/
-    │   └── (optional sample datasets)
-    │
-    ├── notebooks/
-    │   ├── LinearRegression.ipynb
-    │   ├── LogisticRegression.ipynb
-    │   ├── NaiveBayes.ipynb
-    │   ├── DecisionTree.ipynb
-    │   ├── KMeans.ipynb
-    │   ├── PCA.ipynb
-    │   ├── SVM.ipynb
-    │   ├── DBSCAN.ipynb
-    │   └── (all your notebook files moved here)
-    │
-    ├── classification/
-    │   ├── logistic_regression.py
-    │   ├── decision_tree.py
-    │   ├── naive_bayes.py
-    │   ├── svm.py
-    │   └── knn.py
-    │
-    ├── regression/
-    │   ├── linear_regression.py
-    │   ├── polynomial_regression.py
-    │   └── ridge_regression.py  (optional future)
-    │
-    ├── clustering/
-    │   ├── k_means.py
-    │   ├── dbscan.py
-    │   └── hierarchical_clustering.py
-    │
-    ├── dimensionality_reduction/
-    │   └── pca.py
-    │
-    ├── deep_learning/
-    │   ├── simple_neural_network.py
-    │   ├── activation_functions.py
-    │   └── loss_functions.py
-    │
-    └── utils/
-        ├── preprocessing.py
-        ├── metrics.py
-        └── visualization.py
-
-
 # How to Use
 
 1. Clone the Repository
